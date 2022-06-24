@@ -1,7 +1,6 @@
 #-*- encoding:utf-8 -*-
-from multiprocessing import Process,Manager
-import time,random
-import asyncio,time
+from multiprocessing import Manager
+import random,asyncio,time
 C=100
 semaphone=asyncio.Semaphore(C)
 tasks=[]
@@ -12,7 +11,7 @@ async def GetResponse(sum3,i):
 async def funa(sum3,i):
     await GetResponse(sum3,i)
 class yourlife(object):
-    
+
     def __init__(self):
         self.init=["0岁你出生了是个男孩","1岁你自学会了走路","2岁你学会了数独","3岁上了城里的幼儿园","4岁你学完了Python","5岁你学会C++、Java。","6岁你上了城里的普通小学","7岁你为班级同学写了表白程序，你父母没说你早恋。","8岁你因为调戏了你10岁的姐姐被父母第一次打","9岁你第一次学会3D建模","10岁你学会Mysql数据库","11岁你和同学一起出去吃饭","12岁你上了国际学校（初中）","13岁由于老外出言不逊调侃中国你看不下去了黑了他的电脑","14岁你出国上了私立中学","15岁因为老师调戏中国女学生，你黑掉老师的Facebook和Whatsapp","16岁你被学校称为电脑怪才，逃课编程","17岁你写了一款游戏卖了1亿","18岁你上了大学","19岁你有了自己的车","20岁你结婚了","21岁你回国生孩子","22岁你身高193"]
 
@@ -48,6 +47,7 @@ class yourlife(object):
 
         self.r4 = random.randint(81, 10000)
 
+
     def before(self,q):
             for i in self.init:
                 q.put(i)
@@ -62,7 +62,6 @@ class yourlife(object):
                 else:
                     print(q.get(i))
                 time.sleep(1)
-                
     def addofafter(self):
         after1=[]
         after2 = []
@@ -77,14 +76,13 @@ class yourlife(object):
         l1 = set(after1)
         l2 = set(after2)
         l3 = set(after3)
-        
     def after(self):
         for i in l1:
-            if self.sum1 == self.r1:
-                print(f"{self.sum1}岁 {random.choice(self.death)}")
+            if self.sum2 == self.r1:
+                print(f"{self.sum2}岁 {random.choice(self.death)}")
                 break
             else:
-                print(f"{self.sum1}岁 {i}")
+                print(f"{self.sum2}岁 {i}")
                 time.sleep(1)
             self.sum1 += 1
         for i in l2:
@@ -103,7 +101,6 @@ class yourlife(object):
                 print(f"{self.sum3}岁 {i}")
                 time.sleep(1)
             self.sum3 += 1
-            
     def Monasticism(self):
         for i in range(self.r4):
             task = asyncio.ensure_future(funa(self.sum3, "修仙"))
