@@ -1,6 +1,7 @@
 import re
 import requests
 import os
+import time
 num = 0
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
@@ -9,24 +10,28 @@ header = {
     'Accept-Encoding': 'gzip, deflate, br',
     'Accept-Language': 'zh-CN,zh;q=0.9'
 }
-url = 'https://image.baidu.com/search/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=&sf=1&fmq=1657540964014_R&pv=&ic=&nc=1&z=&hd=&latest=&copyright=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&dyTabStr=MCwzLDEsNiw1LDQsNyw4LDIsOQ==&ie=utf-8&sid=&word=小姐姐'
-html = requests.get(url, headers=header)
-html.encoding = 'utf-8'
-print(html.text)
+word=str(input("输入你要爬的内容"))
+n=int(input("要爬几页"))
+page=0
+for i in range(n):
+    url = f'https://image.baidu.com/search/index?tn=baiduimage&ipn=r&word={word}&pn={page}'
 
-html = html.text
-pachong_picture_path = 'C:\\Users\\zzk\\PycharmProjects\\untitled8'
-if not os.path.exists(pachong_picture_path):
-    os.mkdir(pachong_picture_path)
+    html = requests.get(url, headers=header,timeout=3)
+    html.encoding = 'utf-8'
+    print(html.text)
 
-res = re.findall('"objURL":"(.*?)"', html)
-for i in res:  
-    num = num + 1  
-    picture = requests.get(i)
-    file_name = 'C:\\Users\\zzk\\PycharmProjects\\untitled8' + str(num) + ".jpg"
-    f = open(file_name, "wb")
-    f.write(picture.content)
-    with open(i.split('/')[-1].split(".")[0]+'.jpg','wb')as f:
-        f.write(picture.content)
-    print(i,"下载成功")
+    html = html.text
+    pachong_picture_path = 'C:\\Users\\zzk\\PycharmProjects\\untitled8\\恐怖图片'
+    if not os.path.exists(pachong_picture_path):
+        os.mkdir(pachong_picture_path)
+
+    res = re.findall('"objURL":"(.*?)"', html)
+    for i in res:
+        picture = requests.get(i)
+        with open(i.split('/')[-1].split(".")[0]+'.jpg','wb')as f:
+            f.write(picture.content)
+        print(i.split('/')[-1].split(".")[0]+'.jpg',"下载成功")
+    print(len(res))
+    page+=30
+    time.sleep(10)
 f.close()
