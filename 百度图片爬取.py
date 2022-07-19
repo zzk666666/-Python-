@@ -22,7 +22,7 @@ page=0
 for i in range(n):
     url = f'https://image.baidu.com/search/index?tn=baiduimage&ipn=r&word={word}&pn={page}'
 
-    html = requests.get(url, headers=header,timeout=5)
+    html = requests.get(url, headers=header,timeout=10)
     html.encoding = 'utf-8'
     html = html.text
     pachong_picture_path = 'C:\\Users\\zzk\\PycharmProjects\\untitled8'
