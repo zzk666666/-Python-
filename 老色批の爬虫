@@ -132,7 +132,7 @@ if __name__ == '__main__':
     url4 = f'https://image.baidu.com/search/index?tn=baiduimage&ipn=r&word=性感天后&pn={page4}'
     url5 = f'https://image.baidu.com/search/index?tn=baiduimage&ipn=r&word=美女&pn={page5}'
     page=int(input("客观您要爬多少页？"))
-    print("GO→")
+    print("GO！","→"*100)
     p1=multiprocessing.Process(target=GetResponse1,args=(url1,page))
     p2 = multiprocessing.Process(target=GetResponse2, args=(url2,page))
     p3 = multiprocessing.Process(target=GetResponse3, args=(url3, page))
