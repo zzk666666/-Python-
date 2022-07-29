@@ -1,0 +1,16 @@
+import requests,re
+from urllib.request import urlretrieve
+headers_={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"}
+url='https://movie.douban.com/top250'
+res=requests.get(url,headers=headers_).text
+p_title='<img width="100" alt="(.*?)"'
+title=re.findall(p_title,res,re.S)
+p_img='<img width="100" alt=".*?" src="(.*?)"'
+img=re.findall(p_img,res,re.S)
+for i in range(len(title)):
+    print(str(i+1)+'.'+title[i])
+    print(img[i])
+    res=requests.get(img[i])
+    file=open(r'C:/Users/zzk/PycharmProjects/untitled8/douban img/'+title[i],'wb')
+    file.write(res.content)
+    file.close()
