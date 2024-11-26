@@ -22,7 +22,7 @@ while True:
         r = random.randint(97, 122)
         word = chr(r)
         text=font.render(word, True, (0, 255, 0))
-        window.blit(text,(i*col,drops[i]*col))
+        window.blit(text,(i*jg,drops[i]*jg))
         drops[i]+=1#字母下落
         if random.random()>0.95:#设置为不整齐下落
             drops[i]=0
