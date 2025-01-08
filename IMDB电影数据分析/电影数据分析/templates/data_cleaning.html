@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .pailie{
+            flex-wrap: nowrap;
+            background-repeat: repeat-x;
+            display: flex;
+            justify-content: flex-start;
+        }
+         .return{
+            text-align: left;
+        }
+       #tbody{
+            border-right: 5px solid #e5e5e5;
+            /*flex-wrap: nowrap;*/
+
+        }
+        #tbody2{
+            border-right: 5px solid #e5e5e5;
+            /*flex-wrap: nowrap;*/
+
+        }
+        table{
+            /*border-collapse: collapse;*/
+            border: 5px solid #e5e5e5;
+            flex-wrap: nowrap;
+        }
+
+       th{
+            border: 10px solid #e5e5e5;
+            width: 200px;
+            height: 40px;
+            background-color: blue;
+            color: white;
+        }
+        td{
+
+            display: flex;
+            border: 10px solid #e5e5e5;
+            width: 200px;
+            height: 40px;
+            background-color: lightskyblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+
+    <p class="return"><a href="票房.html">返回</a></p>
+    <details>
+         <summary>电影名</summary>
+         <p>{{moive_name }}</p>
+    </details>
+    <details>
+        <summary>电影票房</summary>
+        <p>{{moive_price }}</p>
+    </details>
+   <div class="pailie">
+        <table id="tbody" width="200px">
+            <tr>
+                <th>电影名</th>
+            </tr>
+        </table>
+        <table id="tbody2" width="200px">
+            <tr>
+                <th>票房</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+
+        var tbody=document.getElementById('tbody');
+        var tbody2=document.getElementById('tbody2');
+        var tr=document.createElement("tr");
+        var th=document.createElement("th");
+        var td=document.createElement("td");
+        var p=document.getElementsByTagName('p');
+        var ul=document.getElementsByTagName('ul');
+        var li=document.createElement('li');
+        var strlist1=String(eval(p[1].innerHTML));
+        var strlist2=String(eval(p[2].innerHTML));
+        var list1=strlist1.split("', '");
+        var list2=strlist2.split(",");
+        var mn=[];
+        var mp=[];
+        var odd=1;
+
+        document.write(list1[0].split(',').length);
+        var i=0;
+        while(i<list1[0].split(',').length)
+        {
+            td=document.createElement("td");
+            tr.appendChild(td);
+            td.innerHTML=list1[0].split(',')[i];
+            tbody.appendChild(td);
+            i++;
+        }
+
+        i=0;
+
+        while(i<list2.length)
+        {
+            td=document.createElement("td");
+            tr.appendChild(td);
+            td.innerHTML=list2[i];
+            tbody2.appendChild(td);
+            i++;
+        }
+
+    </script>
+</body>
+</html>

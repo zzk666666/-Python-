@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .pailie{
+            flex-wrap: nowrap;
+            display: flex;
+
+        }
+        h1{
+            text-align: center ;
+            position: relative;
+            margin: auto 0;
+        }
+        .return{
+            text-align: left;
+        }
+        #tbody{
+            border-right: 5px solid #e5e5e5;
+            flex-wrap: nowrap;
+
+        }
+        #tbody2{
+            border-right: 5px solid #e5e5e5;
+            /*flex-wrap: nowrap;*/
+
+        }
+
+        table{
+            /*border-collapse: collapse;*/
+            border: 5px solid #e5e5e5;
+            flex-wrap: nowrap;
+        }
+
+        th{
+            border: 10px solid #e5e5e5;
+            width: 200px;
+            height: 40px;
+            background-color: blue;
+            color: white;
+        }
+        td{
+
+            display: flex;
+            border: 10px solid #e5e5e5;
+            width: 200px;
+            height: 40px;
+            background-color: lightskyblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <p>该模型主要是分析{{year}}年IMDB200票房排名</p>
+    <p>最终得出结果为y=5x*rand</p>
+    <p>通过该公式可以获取热门度</p>
+    <p>建模结果如下图:</p><br><br>
+
+    {% for image in images %}
+    <img src="{{url_for('static',filename=image)}}" alt="数据模型">
+
+    {% endfor %}
+
+    <p>{{mes}}</p>
+    <!--<script>-->
+        <!--// var tbody=document.getElementById('tbody');-->
+        <!--// var tbody2=document.getElementById('tbody2');-->
+        <!--//-->
+        <!--// var tr=document.createElement("tr");-->
+        <!--//-->
+        <!--// var td=document.createElement("td");-->
+        <!--// var p=document.getElementsByTagName("p")[1];-->
+        <!--// var predictions=p.innerHTML;-->
+        <!--//-->
+        <!--// i=1;-->
+        <!--// while(i<predictions.split(" ").length)-->
+        <!--// {-->
+        <!--//-->
+        <!--//-->
+        <!--//     td=document.createElement("td");-->
+        <!--//     tr=document.createElement("tr");-->
+        <!--//     td.innerHTML=predictions.split(" ")[i];-->
+        <!--//     tr.appendChild(td);-->
+        <!--//     tbody2.appendChild(tr);-->
+        <!--//     i++;-->
+        <!--// }-->
+
+    <!--</script>-->
+
+</body>
+</html>

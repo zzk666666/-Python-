@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        .pailie{
+            flex-wrap: nowrap;
+            background-repeat: repeat-x;
+            display: flex;
+        }
+        h1{
+            text-align: center ;
+            position: relative;
+            margin: auto 0;
+        }
+        .return{
+            text-align: left;
+        }
+        #tbody{
+            border-right: 5px solid #e5e5e5;
+            /*flex-wrap: nowrap;*/
+
+        }
+        #tbody2{
+            border-right: 5px solid #e5e5e5;
+            /*flex-wrap: nowrap;*/
+
+        }
+        table{
+            /*border-collapse: collapse;*/
+            border: 5px solid #e5e5e5;
+            flex-wrap: nowrap;
+        }
+
+        th{
+            border: 10px solid #e5e5e5;
+            width: 200px;
+            height: 40px;
+            background-color: blue;
+            color: white;
+        }
+        td{
+
+            display: flex;
+            border: 10px solid #e5e5e5;
+            width: 200px;
+            height: 40px;
+            background-color: lightskyblue;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+    <p class="return"><a href="票房.html">返回</a></p>
+    <details>
+         <summary>电影名</summary>
+         <p>{{moive_name }}</p>
+    </details>
+    <details>
+        <summary>电影票房</summary>
+        <p>{{moive_price }}</p>
+    </details>
+    <div class="pailie">
+        <table id="tbody" width="200px">
+            <tr>
+                <th>电影名</th>
+            </tr>
+        </table>
+        <table id="tbody2" width="200px">
+            <tr>
+                <th>票房</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <script>
+        var tbody=document.getElementById('tbody');
+        var tbody2=document.getElementById('tbody2');
+        var tr=document.createElement("tr");
+        var th=document.createElement("th");
+        var td=document.createElement("td");
+        var br=document.createElement("br");
+        var p=document.getElementsByTagName('p');
+        var strlist1=String(eval(p[1].innerHTML));
+        var strlist2=String(eval(p[2].innerHTML));
+        var list1=strlist1.split("','");
+        var list2=strlist2.split("', '");
+        var mn=[];
+        var mp=[];
+        var odd=1;
+        for(var i=0;i<list1.length;i++)
+        {
+
+            mn.push(list1[i]);
+        }
+        for(var i=0;i<list2.length;i++)
+        {
+
+            mp.push(list2[i]);
+        }
+        document.write(p[2].innerHTML.split(", '").length);
+        var i=0;
+        while(i<list1[0].split("', '")[0].split(",").length)
+        {
+
+            td=document.createElement("td");
+            tr.appendChild(td);
+            td.innerHTML=list1[0].split("', '")[0].split(",")[i];
+            tbody.appendChild(tr);
+            // td=document.createElement("td");
+            // td.innerHTML=list2[0].split("', '")[0].split(",")[i];
+            // tr.appendChild(td);
+            //
+            // tbody2.appendChild(tr);
+
+
+            // td=document.createElement("td");
+            // td.innerHTML=list2[0].split("', '")[0].split(",")[i];
+            // tr.appendChild(td);
+            // tbody.appendChild(tr);
+            // document.write("<td>"+list1[0].split("', '")[0].split(",")[i]+"</td>","<td>"+list2[0].split("', '")[0].split(",")[i]+"</td>");
+            //
+            // document.write("<br/>");
+            i++;
+        }
+
+
+        i=0;
+
+        while(i<p[2].innerHTML.split(", '").length)
+        {
+            td=document.createElement("td");
+            tr=document.createElement("tr");
+            td.innerHTML=p[2].innerHTML.split(", '")[i];
+            tr.appendChild(td);
+            tbody2.appendChild(tr);
+            i++;
+        }
+
+        // i=0;
+
+        // while(i<list2[0].split("', '")[0].split(",").length)
+        // {
+        //     td=document.createElement("td");
+        //     tr.appendChild(td);
+        //     td.innerHTML=list2[0].split("', '")[0].split(",")[i];
+        //     tbody2.appendChild(tr);
+        //
+        //
+        //     // td=document.createElement("td");
+        //     // td.innerHTML=list2[0].split("', '")[0].split(",")[i];
+        //     // tr.appendChild(td);
+        //     // tbody.appendChild(tr);
+        //     // document.write("<td>"+list1[0].split("', '")[0].split(",")[i]+"</td>","<td>"+list2[0].split("', '")[0].split(",")[i]+"</td>");
+        //     //
+        //     // document.write("<br/>");
+        //     i++;
+        // }
+
+        // i=0;
+        // while(i<list2[0].split("', '")[0].split(",")[i].length)
+        // {
+        //     br=document.createElement("br");
+        //     td=document.createElement("td");
+        //     td.innerHTML=list2[0].split("', '")[0].split(",")[i];
+        //
+        //     tr.appendChild(td);
+        //     tbody.appendChild(tr);
+        //     // td=document.createElement("td");
+        //     // td.innerHTML=list2[0].split("', '")[0].split(",")[i];
+        //     // tr.appendChild(td);
+        //     // tbody.appendChild(tr);
+        //     // document.write("<td>"+list1[0].split("', '")[0].split(",")[i]+"</td>","<td>"+list2[0].split("', '")[0].split(",")[i]+"</td>");
+        //     //
+        //     // document.write("<br/>");
+        //     i++;
+        // }
+
+
+
+
+
+
+
+        // for(var i=0;i<p[1].innerHTML.length;i++){
+        //     document.write(p[1].innerHTML[i]);
+        // }
+
+    </script>
+</body>
+</html>
